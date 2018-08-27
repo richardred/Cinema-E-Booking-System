@@ -4,8 +4,8 @@
 ### Fall 2018 Cinema E-Booking System
 
 ####  Team:
-#####   Sunjun Park  ---    Web Developer          
-#####   Richard Red  ---    Java Developer    
-#####   Eric Cho    ---     Java Developer
-#####   Amogh Phadke ---    Database Administrator
+#####   Sunjun Park&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web Developer          
+#####   Richard Red&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java Developer    
+#####   Eric Cho&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java Developer
+#####   Amogh Phadke&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Database Administrator
   
