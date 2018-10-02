@@ -16,3 +16,10 @@ and user information. System administrator will view real time statistics of boo
 registers users through a filtered reports facility.
 Ticket prices are set according to the age category of the ticket owner. The system has three age categories: Child,
 adult and senior.
+
+## Built With
+* [MySQL](https://www.mysql.com/) - an open-source relational database management system
+* [Eclipse](http://www.eclipse.org/) - a Java IDE (integrated deveopment environment)
+
+## License
+This project is licensed under the MIT License - see the [License](LICENSE) file for details
