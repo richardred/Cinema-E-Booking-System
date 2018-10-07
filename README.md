@@ -22,4 +22,4 @@ adult and senior.
 * [Eclipse](http://www.eclipse.org/) - a Java IDE (integrated deveopment environment)
 
 ## License
-This project is licensed under the MIT License - see the [License](LICENSE) file for details
+This project is licensed under the MIT License - see the [License](LICENSE) file for details.
