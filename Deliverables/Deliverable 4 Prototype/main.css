@@ -4,16 +4,47 @@ html {
     font-family:Consolas, "Liberation Mono", Menlo, Courier, monospace;
     text-transform: uppercase;
 }
+body{
+    min-height: 800px;
+    overflow: scroll;
+}
 .primary-background {
-    align: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-position: 50% 50%;
 }
-.w3-container w3-card-4{
-    align: center;
-}
-
 a{
   color: #EFDAB9;
+    text-decoration: none;  
+}
+a.profile{
+    font-size: 10px;
+}
+p.desc{
+    font-size: 12px;
+}
+img.social{
+    height: 10%;
+    width: 10%;
+}
+
+footer.grr{
+    position: fixed;
+    height: 100px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #EFDAB9;
+    text-align: right;
+    display: inline-block;
+}
+footer.main {
+    position: relative;
+    height: 100px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #EFDAB9;
+    text-align: right;
+    display: inline-block;
 }
