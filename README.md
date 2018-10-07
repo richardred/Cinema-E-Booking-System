@@ -25,24 +25,24 @@ adult and senior.
 This project is licensed under the MIT License - see the [License](LICENSE) file for details.
 
 TODO List
-subscribe/unsubscribe ✔
-create user account ✔
-update user account ✔
-delete user account ✔
-edit payment info ✔
-verify/confirm email ✔
-reset/update password ✔
-generate report
-manage employees
-add/update/delete movie listings
-update ticket type
-filtered search
-browse order history
-select movie, time, seats
-view cart
-add to cart
-remove from cart
-checkout cart
-apply promo code
-confirmation receipt
-refund tickets
+subscribe/unsubscribe ✔  
+create user account ✔  
+update user account ✔  
+delete user account ✔  
+edit payment info ✔  
+verify/confirm email ✔  
+reset/update password ✔  
+generate report  
+manage employees  
+add/update/delete movie listings  
+update ticket type  
+filtered search  
+browse order history  
+select movie, time, seats  
+view cart  
+add to cart  
+remove from cart  
+checkout cart  
+apply promo code  
+confirmation receipt  
+refund tickets  
