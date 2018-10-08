@@ -1,31 +1,41 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Movie Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
 
-        <meta charset="UTF-8">
-        <title> Cinema Booking System </title>
-    </head>
-    <div class="w3-bar w3-border w3-black">
-        <a href="homepage.html" class="w3-bar-item w3-button">Cinema E-Booking System 9A</a>
-        <div class="w3-dropdown-hover">
-            <button class="w3-button">Movies</button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="searchpage.html" class="w3-bar-item w3-button">In Theaters</a>
-                <a href="searchpage.html" class="w3-bar-item w3-button">Coming Soon</a>
-            </div>   
+    <body>
+        <div class="w3-bar w3-border w3-black">
+            <a href="homepage.html" class="w3-bar-item w3-button">Cinema E-Booking System 9A</a>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">Movies</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="searchpage.html" class="w3-bar-item w3-button">In Theaters</a>
+                    <a href="searchpage.html" class="w3-bar-item w3-button">Coming Soon</a>
+                </div>   
+            </div>
+                <a href="homepage.html" class="w3-bar-item w3-button w3-right">Cart</a>
+            <a href="login.html" class="w3-bar-item w3-button w3-right"> Sign In</a>
+            <input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search...">
         </div>
-        <a href="homepage.html" class="w3-bar-item w3-button w3-right">Cart</a>
-        <a href="login.html" class="w3-bar-item w3-button w3-right"> Sign In</a>
-        <input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search..">
-        
-    </div>
 
-    <body class="primary-background" background="https://atom-tickets-res.cloudinary.com/image/upload/q_auto,c_crop,h_10000,w_1920/v1538518424/console_uploads/chkgrjcmozb79rvbvl6a.jpg">
-        
-<div class="w3-main w3-content w3-padding" style="max-width:750px;margin-top:100px">
-<div class="w3-quarter">
+
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+            <!-- First Photo Grid-->
+            <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+                <form class="w3-padding w3-container w3-card-4">
+                    <p> Filter:  
+                        <a href="#"> <button class="w3-button w3-wide w3-bar">Year</button></a>
+                        <a href="#"> <button class="w3-button w3-wide w3-bar">Alphabetical</button></a>
+                        <a href="#"> <button class="w3-button w3-wide w3-bar">Genre</button></a>
+                        <a href="#"> <button class="w3-button w3-wide w3-bar">Time</button></a>
+                    </p>
+                </form>
+                <div class="w3-quarter">
                     <div class="w3-btn w3-ripple">
                         <a href="moviepage.html">
                             <img src="https://atom-tickets-res.cloudinary.com/image/upload/c_scale,h_360,q_auto,w_240/v1/ingestion-images-archive-prod/archive/rm1725382656.jpg" alt="A Star is Born" style="width:100%">
@@ -54,6 +64,7 @@
                     <h3>School Night</h3>
 
                 </div>
+            </div>
 
             <!-- Second Photo Grid-->
             <div class="w3-row-padding w3-padding-16 w3-center">
@@ -85,20 +96,23 @@
                     <h3>Little Women</h3>
 
                 </div>
-    
-        </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="w3-center w3-padding-32">
+                <div class="w3-bar">
+                    <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+                    <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+                </div>
+            </div>
+
+            <hr>
+
+
         </div>
     </body>
-
-    <footer class="main">
-        <br>
-        <hr>
-        <br>
-        <a href="aboutus.html"> About Us</a>
-        <br>
-        <a href="contact.html"> Contact</a>
-        <br>
-        <p> Software Engineering 4050<br>
-            FALL 2018 GROUP 9A</p>
-    </footer>
 </html>

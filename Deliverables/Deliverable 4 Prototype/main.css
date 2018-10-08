@@ -9,9 +9,9 @@ body{
     overflow: scroll;
 }
 .primary-background {
-    width: 100%;
-    height: 100%;
-    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 a{
   color: #EFDAB9;
@@ -47,4 +47,8 @@ footer.main {
     color: #EFDAB9;
     text-align: right;
     display: inline-block;
+}
+table.w3-table w3-half w3-display-middle{
+    height: 100px;
+    overflow-y: hidden;
 }
