@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <div class="w3-bar w3-black">
+        <a href="homepage.html" class="w3-bar-item w3-button">Cinema E-Booking System 9A</a>
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Movies</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="searchpage.html" class="w3-bar-item w3-button">In Theaters</a>
+                <a href="searchpage.html" class="w3-bar-item w3-button">Coming Soon</a>
+            </div>   
+        </div>
+        <a href="login.html" class="w3-bar-item w3-button w3-right"> Sign In</a>
+        <input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search...">
+    </div>
+
+    <body class="w3-content">
+
+        <!-- Sidebar/menu -->
+        <nav class="w3-sidebar w3-black w3-collapse" style="z-index:3;width:260px" id="mySidebar">
+
+            <div class="w3-container w3-display-container w3-padding-16">
+                <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+                <h3>Available</h3>
+                <h3>Showings</h3>
+                <h6> For Venom</h6>
+                <hr>
+                <form target="_blank">
+                    <p>Available Times <br> 
+                        <button class="w3-button"><a href="ticket.html" >1:00 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >2:15 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >3:00 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >3:45 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >4:25 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >6:45 PM</a></button>
+                        <button class="w3-button"><a href="ticket.html" >8:30 PM</a></button>
+
+                    </p>
+
+                </form>
+            </div>
+        </nav>
+
+        <!-- Top menu on small screens -->
+        <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+            <span class="w3-bar-item">Available Showings</span>
+            <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()">></a>
+        </header>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left:260px">
+
+            <!-- Push down content on small screens -->
+            <div class="w3-hide-large" style="margin-top:80px"></div>
+
+            <!-- Slideshow Header -->
+            <div class="w3-container" id="apartment">
+                <h2>Venom</h2>
+                <div class="w3-display-container mySlides">
+                    <img src="https://atom-tickets-res.cloudinary.com/image/upload/c_fill,g_north,h_270,q_auto,w_270/v1524588064/ingestion-images-archive-prod/archive/1524588064263_247729_cops_0.jpg" style="width:100%;margin-bottom:-6px">
+                    <div class="w3-display-bottomleft w3-container w3-black">
+                        <p>Movie Poster</p>
+                    </div>
+                </div>
+                <div class="w3-display-container mySlides">
+                    <img src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1533064458/ingestion-images-archive-prod/archive/1533064457749_247729_cops_8.jpg" style="width:100%;margin-bottom:-6px">
+                    <div class="w3-display-bottomleft w3-container w3-black">
+                        <p>french kiss</p>
+                    </div>
+                </div>
+                <div class="w3-display-container mySlides">
+                    <img src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1518112521/ingestion-images-archive-prod/archive/1518112520791_247729_cops_1.jpg" style="width:100%;margin-bottom:-6px">
+                    <div class="w3-display-bottomleft w3-container w3-black">
+                        <p>how babies are made</p>
+                    </div>
+                </div>
+                <div class="w3-display-container mySlides">
+                    <img src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1538418154/ingestion-images-archive-prod/archive/1538418154329_247729_cops_16.jpg" style="width:100%;margin-bottom:-6px">
+                    <div class="w3-display-bottomleft w3-container w3-black">
+                        <p>He's about to eat someone</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-row-padding w3-section">
+                <div class="w3-col s3">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="https://atom-tickets-res.cloudinary.com/image/upload/c_fill,g_north,h_270,q_auto,w_270/v1524588064/ingestion-images-archive-prod/archive/1524588064263_247729_cops_0.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Movie Poster">
+                </div>
+                <div class="w3-col s3">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1533064458/ingestion-images-archive-prod/archive/1533064457749_247729_cops_8.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Movie Scene">
+                </div>
+                <div class="w3-col s3">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1518112521/ingestion-images-archive-prod/archive/1518112520791_247729_cops_1.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Movie Scene">
+                </div>
+                <div class="w3-col s3">
+                    <img class="demo w3-opacity w3-hover-opacity-off" src="https://images.atomtickets.com/image/upload/h_960,q_auto/v1538418154/ingestion-images-archive-prod/archive/1538418154329_247729_cops_16.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Movie Scene">
+                </div>
+            </div>
+
+            <div class="w3-container">
+                <h4><strong>Movie Info</strong></h4>
+                <div class="w3-row w3-large">
+                    <div class="w3-col s6">
+                        <p>Director: Ruben Fleischer</p>
+                        <p>Producer: Avi Arad, Amy Pascal, Matt Tolmach</p>
+                        <p>Writer: Kelly Marcel, Todd McFarlane, David Michelinie</p>
+                    </div>
+                    <div class="w3-row s6">
+                        <p>Release Date: Oct 5, 2018</p>
+                        <p>Runtime: 1hr 52m</p>
+                    </div>
+                </div>
+                <hr>
+
+                <h4><strong>Cast</strong></h4>
+                <div class="w3-row w3-large">
+                    <div class="w3-col s6">
+                        <p>Tom Hardy</p>
+                        <p>Michelle Williams</p>
+                        <p>Tom Holland</p>
+                        <p>Woody Harrelson</p>
+                        <p>Jenny Slate</p>
+                    </div>
+                    <div class="w3-col s6">
+                        <p>Riz Ahmed</p>
+                        <p>Michelle Lee</p>
+                        <p>Marcella Bragio</p>
+                        <p>Scott Haze</p>
+                        <p>Sailor Larocque</p>
+                    </div>
+                </div>
+                <hr>
+
+                <h4><strong>Synopsis</strong></h4>
+                <p>When investigative journalist Eddie Brock (Tom Hardy) goes sniffing for a scoop involving a sinister doctor (Riz Ahmed), he gets a whole lot more than just a story. He gets a symbiote. This mysterious goo can transform Eddie into a superhuman hybrid, granting him unbelievable powers – if only he can learn to control it. Together as Venom, Eddie and his symbiote could be a force for good or for evil. The question is: just how anti is this new hero going to be?</p>
+                <hr>
+                <br><br>
+            </div>
+        </div>
+        <script>
+            // Script to open and close sidebar when on tablets and phones
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+            // Slideshow Apartment Images
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+                showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                if (n > x.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = x.length}
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+                }
+                x[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " w3-opacity-off";
+            }
+        </script>
+
+    </body>
+</html>
