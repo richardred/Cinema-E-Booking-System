@@ -8,15 +8,15 @@ import javax.servlet.*;
 import java.sql.*;
  
 @SuppressWarnings("serial")
-public class signup extends HttpServlet {  
-	private static MyDB db = new MyDB();
+public class signup extends HttpServlet {
+   
+    private static MyDB db = new MyDB();
     private static Connection c = null;
-    private static String 
-    database = "yeet",
-    table    = "account",
-    NameF, NameL, Email, EmailC, Pass, PassC;
-    private static int UserID;
-    private static int IsSubbed;
+    private static int UserID,IsSubbed;
+    private static String
+    NameF, NameL, Email, EmailC, Pass, PassC,
+    schema = "yeet",
+    table  = "account";
    
     /*  registerUser() description:
      *
@@ -28,24 +28,24 @@ public class signup extends HttpServlet {
    
     private static void registerUser() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, MessagingException {    
         c=db.getCon();
-    
+   
         createUserTable();
-        
+       
         if(!validFields()) return;
-            
+           
         PreparedStatement ps = c.prepareStatement
         ("INSERT INTO " + table
         +"(USERID,EMAIL,PASSWORD,ISLOGGEDIN,ISVERIFIED,FNAME,LNAME,ISSUBBED,ADDRESS,CITY,STATE,ZIP) VALUES "
         +"('"+UserID+"','"+Email+"','"+Pass+"',FALSE,FALSE,'"+NameF+"','"+NameL+"','"+IsSubbed+"',NULL,NULL,NULL,NULL);");
-        
+       
         ps.executeUpdate();
         System.out.println("SUCCESS: user registered.");
         Mail m = new Mail();
-        m.send_email("richardred.q@gmail.com", "testsubject", "yeet");
+        m.send_email(Email, 1);
     }
    
     /*     createUserTable() description:
-     * 
+     *
      *  if a "user" table does not exist in the "ecinema" database,
      *  a new "user" table is created, which contains columns:
      *    
@@ -62,32 +62,30 @@ public class signup extends HttpServlet {
      *    STATE      : user residence state
      *    ZIP           : user residence zip code
      */
-    
+   
     private static void createUserTable() throws SQLException {    
-    	DatabaseMetaData dbm = c.getMetaData();
-        ResultSet r = dbm.getTables(null, null, table, null);
+        DatabaseMetaData d = c.getMetaData();
+        ResultSet r = d.getTables(null, null, table, null);
         if (!r.next()) {    
-            PreparedStatement ps0  = c.prepareStatement(
-            	"CREATE TABLE `yeet`.`account` ("
-				  +"`USERID` INT primary key NOT NULL AUTO_INCREMENT,"
-				  +"`EMAIL` VARCHAR(45) NOT NULL,"
-				  +"`PASSWORD` VARCHAR(45) NULL,"
-				  +"`ISLOGGEDIN` TINYINT NULL,"
-				  +"`ISVERIFIED` TINYINT NULL,"
-				  +"`FNAME` VARCHAR(45) NULL,"
-				  +"`LNAME` VARCHAR(45) NULL,"
-				  +"`ISSUBBED` TINYINT NULL,"
-				  +"`ADDRESS` VARCHAR(45) NULL,"
-				  +"`CITY` VARCHAR(45) NULL,"
-				  +"`STATE` VARCHAR(45) NULL,"
-				  +"`ZIP` INT NULL);");
-            ps0.executeUpdate();
+            PreparedStatement ps = c.prepareStatement(
+                "CREATE TABLE `"+schema+"`.`+table+` ("
+                +"`USERID` INT primary key NOT NULL AUTO_INCREMENT,"
+                +"`EMAIL` VARCHAR(45) NOT NULL,"
+                +"`PASSWORD` VARCHAR(45) NULL,"
+                +"`ISLOGGEDIN` TINYINT NULL,"
+                +"`ISVERIFIED` TINYINT NULL,"
+                +"`FNAME` VARCHAR(45) NULL,"
+                +"`LNAME` VARCHAR(45) NULL,"
+                +"`ISSUBBED` TINYINT NULL,"
+                +"`ADDRESS` VARCHAR(45) NULL,"
+                +"`CITY` VARCHAR(45) NULL,"
+                +"`STATE` VARCHAR(45) NULL,"
+                +"`ZIP` INT NULL);");
+            ps.executeUpdate();
             System.out.println("SUCCESS: New user table created.");
         }    
-        
-      
     }
-
+ 
     /*  validFields() description:
      *  checks if all String fields satisfy conditions:
      *  1. all fields must be non-empty
@@ -100,37 +98,37 @@ public class signup extends HttpServlet {
         //check if there is an empty field
         if (NameF.isEmpty()||Email .isEmpty()||Pass .isEmpty()||
             NameL.isEmpty()||EmailC.isEmpty()||PassC.isEmpty()) {
-        	System.out.println("ERROR: All fields are not complete");
+            System.out.println("ERROR: All fields are not complete");
             return false;  
         }
        
         // check if the given emails match
         if (!Email.equals(EmailC)) {
-        	System.out.println("ERROR: Emails do not match.");
+            System.out.println("ERROR: Emails do not match.");
             return false;      
         }
-        
+       
         // check if the given passwords match
         if (!Pass.equals(PassC)) {
-        	System.out.println("ERROR: Passwords do not match.");
+            System.out.println("ERROR: Passwords do not match.");
             return false;  
         }
-        
+       
         // check if email is in the user database
         PreparedStatement ps= c.prepareStatement("SELECT EMAIL FROM account");
         ResultSet r = ps.executeQuery();
         while (r.next())
             if (r.getString("EMAIL").equals(Email)) {
-            	System.out.println("ERROR: Email is already in use.");
+                System.out.println("ERROR: Email is already in use.");
                 return false;
             }
         return true;
     }
    
    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-    	response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {  
            
             /*
@@ -154,11 +152,11 @@ public class signup extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {   
-    	try {
-    		processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+        try {
+            processRequest(request, response);
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-        	e.printStackTrace();
+            e.printStackTrace();
         }  
     }
    
@@ -172,11 +170,11 @@ public class signup extends HttpServlet {
      */
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	try {
-    		processRequest(request, response);
-    	} catch (InstantiationException|IllegalAccessException | ClassNotFoundException | SQLException e) {
-    		e.printStackTrace();
-    	}  
+        try {
+            processRequest(request, response);
+        } catch (InstantiationException|IllegalAccessException|ClassNotFoundException|SQLException e) {
+            e.printStackTrace();
+        }  
     }
  
     /**
@@ -188,16 +186,16 @@ public class signup extends HttpServlet {
         return "Short description";
     }// </editor-fold>
  
-    public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, MessagingException {     
-        UserID    = 0;
-        Email   = "eric6cho@gmail.com";    
-        EmailC  = "eric6cho@gmail.com";
-        Pass    = "RealPassword";                
-        PassC   = "RealPassword";
-        NameF   = "Eric";
-        NameL   = "Cho";
-        IsSubbed= 0;
-        
+    public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, MessagingException {    
+        UserID   = 0;
+        Email    = "eric6cho@gmail.com";    
+        EmailC   = "eric6cho@gmail.com";
+        Pass     = "RealPassword";                
+        PassC    = "RealPassword";
+        NameF    = "Eric";
+        NameL    = "Cho";
+        IsSubbed = 0;
+       
         registerUser();
     }    
 }

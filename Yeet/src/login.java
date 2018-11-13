@@ -1,84 +1,3 @@
-//import java.io.IOException;
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//
-//import java.sql.ResultSet;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.SQLException;
-//import java.sql.PreparedStatement;
-//
-///**
-// * Servlet implementation class login
-// */
-//@WebServlet("/login")
-//public class login extends HttpServlet {
-//	private static final long serialVersionUID = 1L;
-//       
-//    /**
-//     * @see HttpServlet#HttpServlet()
-//     */
-//    public login() {
-//        super();
-//        // TODO Auto-generated constructor stub
-//    }
-//
-//	/**
-//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//	}
-//
-//	/**
-//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		doGet(request, response);
-//		String user = request.getParameter("username");
-//		String pass = request.getParameter("password");
-//		// Connect to mysql and verify username password
-//		
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//		
-//			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "bjlw1227");
-//			
-//			//PreparedStatement ps = c.prepareStatement("select username,password from student where userame=? and password=?");
-//			PreparedStatement ps = c.prepareStatement("INSERT INTO `logindatabase`.`user` (`username`) VALUES ('8');");
-//
-////			ps.setString(1, user);
-////			ps.setString(2, pass);
-//	 
-//			ResultSet rs = ps.executeQuery();
-//	 
-//			while (rs.next()) {
-//				response.sendRedirect("success.html");
-//				return;
-//			}
-//			response.sendRedirect("error.html");
-//			return;
-//		} catch (ClassNotFoundException | SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}		
-//		if(user.equals("admin") && pass.equals("admin")) {
-//			response.sendRedirect("success.html");
-//			return;
-//		}
-//		else {
-//			response.sendRedirect("error.html");
-//			return;
-//		}
-//	}
-//
-//}
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
@@ -91,16 +10,9 @@ import java.sql.*;
 public class login extends HttpServlet {  
     private static MyDB db = new MyDB();
     private static Connection c = null;
-    private static String
-    database = "yeet",
-    table    = "account"   ,
-    Email  ,
-    Pass   ;
-   
-   
-   
-   
-   
+    private static String database = "yeet", table = "account";
+    private static String Email, Pass;
+    
     /*  loginUser() description:
      *
      *  establishes a connection with the database "ecinema",
@@ -111,22 +23,12 @@ public class login extends HttpServlet {
    
     private static void loginUser() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {   
     	c=db.getCon();
-       
-        if (!validateCredentials())return;
-       
+        if (!validateCredentials()) return;
+        
         //update database so that the user is considered to be logged in
-       
         System.out.println("SUCCESS: user registered.");   
     }
-   
-   
-   
-   
-   
-   
-   
-   
-   
+    
      /* validateCredentials() description:
      *  checks if all String fields satisfy conditions:
      *  1. all fields must be non-empty
@@ -135,20 +37,18 @@ public class login extends HttpServlet {
      */
    
     private static boolean validateCredentials() throws SQLException {  
-        boolean status=false;
+        boolean status = false;
    
         // check if any field is empty
- 
         if (Email.isEmpty()||Pass .isEmpty()) {   
         	System.out.println("ERROR: All fields are not complete");
             return false;  
         }
    
         // finds user email in the user table
-   
         PreparedStatement ps1= c.prepareStatement("SELECT EMAIL FROM user");
         ResultSet r1 = ps1.executeQuery();
-        int a=0;
+        int a = 0;
         while (r1.next()) { 
         	a++;
             if (r1.getString("EMAIL").equals(Email)) {
@@ -158,11 +58,11 @@ public class login extends HttpServlet {
         }
        
         // checks password for user email
-       
         PreparedStatement ps2 = c.prepareStatement("SELECT PASSWORD FROM user");
         ResultSet r2 = ps2.executeQuery();
         String s="";
-        for (int i=0;i<a;i++)   s=r2.getString("PASSWORD");
+        for (int i=0;i<a;i++)
+        	s=r2.getString("PASSWORD");
         if (s.equals(Pass)) {
         	System.out.println("SUCCESS: Password is correct.");
             status = true;
@@ -231,13 +131,10 @@ public class login extends HttpServlet {
         return "Short description";
     }// </editor-fold>
  
-    public static void main(String[] args)
-    throws SQLException, InstantiationException,
-    IllegalAccessException, ClassNotFoundException
-    {  
+    public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {  
         Email = "eric6cho@gmail.com";  
-        Pass  = "RealPassword";    
- 
+        Pass  = "RealPassword";
+        
         loginUser();
-}   
+    }   
 }
