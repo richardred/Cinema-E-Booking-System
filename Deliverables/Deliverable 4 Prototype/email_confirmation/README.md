@@ -1,1 +1,0 @@
-Display verify_email when a user account is created, and once the user clicks whatever link we send to their email, redirect back to email_confirmed. Then, the user will be able to fully access the rest of the website.

@@ -1,0 +1,46 @@
+<html>
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <meta charset='UTF-8'>
+    <title>Login Page</title>
+</head>
+    <body>
+        <div class="container">
+            <div id="topBar">
+                    <ul>
+                        <li><a href="http://127.0.0.1:8000/">
+                                <img src="{% static 'pictures/cinema_logo.png' %}" alt="main logo" id="cinemalogo"/>
+                            </a>
+                        </li>
+                     </ul>
+            </div>
+
+            <div class="smallcontainer">
+            {% if user.is_authenticated %}
+            <p>You are already logged in!</p>
+            {% else %}
+                {% block content %}
+                <div id="login">
+                    <p>Log In</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" id="loginbtn">Login</button><br>
+                        <a id="link" href="http://127.0.0.1:8000/accounts/password_reset">Forgot Password?</a>
+                    </form>
+                {% endblock %}
+                    <br>
+                    <p style="color: white">Don't have an account? <a id="link" href="http://127.0.0.1:8000/accounts/register">Sign up</a></p>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </body>
+        <div class='footer'>
+        <p>Group 9A</p>
+        <p>TixPix E-Cinema Booking System</p>
+        <p>University of Georgia FALL 2018 CSCI4050 Software Engineering</p>
+    </div>
+</html>

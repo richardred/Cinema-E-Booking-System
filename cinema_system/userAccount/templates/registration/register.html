@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <meta charset='UTF-8'>
+    <title>Moovies :D</title>
+</head>
+<div class="container">
+            <div id="topBar">
+                    <ul>
+                        <li><a href="http://127.0.0.1:8000/">
+                                <img src="{% static 'pictures/cinema_logo.png' %}" alt="main logo" id="cinemalogo"/>
+                            </a>
+                        </li>
+                     </ul>
+            </div>
+<div class="smallcontainer">
+    <p><h3>Register for an Account!</h3></p> <br>
+    <div id="registerdiv">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>First Name: {{register.first_name}}</p>
+        <p>Last Name: {{register.last_name}}</p>
+        <p>Email: {{register.email}}</p>
+        <p>Enter password: {{register.password1}}</p>
+        <p>Confirm password: {{register.password2}}</p>
+        <p>Street Address: {{register.street_address}}</p>
+        <p>City: {{register.city}}</p>
+        <p> Select State: {{register.state}}</p>
+        <p>Enter Zip Code: {{register.zipcode}}</p>
+        <p>Would you like to subscribe to our Promotion email subscription? {{register.sendPromo}}</p>
+        <br>
+        <p id="errors" style="margin-left: 40px">{{ register.errors }}</p>
+
+        <br><br>
+
+        <button type="submit" id="loginbtn">Join Now</button><br>
+    </form>
+</div>
+</div>
+</div>

@@ -1,0 +1,90 @@
+{% load static %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'movie_css/movie_page.css' %}">
+    <link rel="icon" href="{% static 'pictures/cinema_logo.png' %}">
+
+    <meta charset='UTF-8'>
+    <title>Search Results :D</title>
+</head>
+    <body>
+        <div class="container">
+            <div id="topBar">
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/">
+                            <img src="{% static 'pictures/cinema_logo.png' %}" alt="main logo" id="cinemalogo"/>
+                        </a>
+                    </li>
+                    <li style="margin-top: 30px; padding-right: 10px">
+                        <div class="dropdown">
+                            <button class="dropbtn">Movies &darr;</button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/movies/sort/Now Playing">Now Playing</a>
+                                <a href="http://127.0.0.1:8000/movies/sort/Coming Soon">Coming Soon</a>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="searchBox">
+                        <li style="margin-top: 30px">
+                            <form method="POST" action="/movies/searchresult/">
+                            {% csrf_token %}
+                                <input type="text" class="textbox" name="search" placeholder="Search Movies">
+                                <input title="Search Movies" value="&#x1F50D;" type="submit" class="button">
+                            </form>
+                         </li>
+                     </div>
+                    {% block content %}
+                    {% if user.is_authenticated %}
+                    {% csrf_token %}
+                    <!--<li style="margin-top: 15px; padding-right: 10px; float: right;"><a href="{% url 'logout' %}">Log Out</a></li>-->
+                    <li style="margin-top: 15px; padding-right: 15px; float: right;">
+                        {% if user.is_superuser %}
+                        <div class="dropdown">
+                            <button class="dropbtn"><a>{{ user.first_name }} {{ user.last_name }}</a></button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/admin">Admin Portal</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="dropdown">
+                            <button class="dropbtn"><a>{{ user.first_name }} {{ user.last_name }}</a>   </button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/accounts/viewProfile/">Profile</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% else %}
+                    {% csrf_token %}
+                    <li style="margin-top: 15px; padding-right: 10px; float: right"><a href="{% url 'login' %}">Login</a></li>
+
+                    {% endif %}
+                    {% endblock %}
+                </ul>
+            </div>
+
+                    <div class="smallcontainer">
+                    <div class="nowplayingbar"><hr><h3>{{ modelType }}</h3><hr></div>
+                        <div class="movieListing">
+                            {% for movie in movies %}
+                            <p><a href="http://127.0.0.1:8000/movies/{{ movie.title }}">
+                            <img id="poster" src="{{movie.poster}}" alt="{{ movie.title }}movie poster">
+                            </a></p>
+                            <p> {{ movie.title }} </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+        </div>
+    </body>
+    <footer>
+    <div class='footer'>
+    <p>Group 9A</p>
+    <p>TixPix E-Cinema Booking System</p>
+    <p>University of Georgia FALL 2018 CSCI4050 Software Engineering</p>
+</div>
+</footer>
+</html>

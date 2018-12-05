@@ -1,0 +1,215 @@
+.moviePoster img {
+    width: 35%;
+    float: left;
+    margin-top: 1%;
+    margin-right: 5%;
+    margin-left: 3%;
+}
+.movieTitle {
+    width: 100%;
+    height: 10%;
+    float: left;
+}
+
+.nowplayingbar {
+    margin-top: 17%;
+}
+
+.movieListing {
+    margin-top: 5%;
+    height: auto;
+}
+
+#buyticketsbtn {
+    width: 250px;
+    background-color: YELLOW;
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.movieDetail {
+    margin-bottom: 40%;
+}
+
+#buyticketsbtn:hover {
+    -webkit-transition: background-color .4s ease;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #60c0f4;
+}
+
+div.ticketList {
+    float: left;
+}
+
+div.priceList {
+    float: left;
+    margin-left: 18%;
+}
+div.quantityList {
+    margin-top: 4%;
+}
+
+#checkoutCart {
+    width: 150px;
+    background-color: YELLOW;
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+    float: right;
+    margin-right: 15%;
+}
+
+#checkoutCart:hover {
+    -webkit-transition: background-color .4s ease;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #60c0f4;
+}
+
+#updateCart {
+    width: 150px;
+    background-color: #60b0f4;
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+    float: right;
+    margin-right: 15%;
+}
+
+#updateCart:hover {
+    -webkit-transition: background-color .4s ease;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #60c0f4;
+}
+
+.summaryContainer {
+    margin: auto;
+    text-align: center;
+    color: white;
+    width:75%;
+    padding: 10px;
+    border-radius: 4px 4px 4px 4px;
+    border: 3px solid #60b0f4;
+    height: 70%;
+}
+
+.summaryContainer .ticketList {
+    margin-left: 10%;
+}
+
+.promoDiv {
+    height: 25%;
+}
+#promo {
+    font-size: 150%;
+    font-weight: bold;
+}
+#promoInstruct {
+    margin-right: 30%;
+}
+
+#promoBox {
+    margin-top: 1%;
+    margin-left: 10%;
+    padding: 15px 15px;
+    line-height: 20px;
+    float: left;
+}
+
+#orderSummary {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+#promobtn {
+    float: left;
+    width: 150px;
+    background-color: #60b0f4;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+    margin-left: 5%;
+}
+
+#promobtn:hover {
+    -webkit-transition: background-color .4s ease;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #60c0f4;
+}
+
+#cancelBtn {
+    width: 250px;
+    background-color: RED;
+    border: none;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.checkoutContainer {
+    margin: auto;
+    text-align: center;
+    color: white;
+    width:75%;
+    padding: 10px;
+    border-radius: 4px 4px 4px 4px;
+    border: 3px solid #60b0f4;
+    height: 100%;
+}
+#cancelBtn:hover {
+    -webkit-transition: background-color .4s ease;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background-color: ORANGE;
+}
+
+.paymentForm {
+    float: left;
+    margin-left: 27%;
+}
+
+.orderSummary {
+    margin-left: 15%;
+}
+
+.checkoutBtns {
+    margin-right: 30%;
+}

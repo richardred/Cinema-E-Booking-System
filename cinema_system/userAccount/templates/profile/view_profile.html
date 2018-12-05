@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <meta charset='UTF-8'>
+        <link rel="icon" href="{% static 'pictures/cinema_logo.png' %}">
+
+    <title>View Profile :D</title>
+</head>
+    <body>
+        <div class="container">
+            <div id="topBar">
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/">
+                            <img src="{% static 'pictures/cinema_logo.png' %}" alt="main logo" id="cinemalogo"/>
+                        </a>
+                    </li>
+                    <li style="margin-top: 30px; padding-right: 10px">
+                        <div class="dropdown">
+                            <button class="dropbtn">Movies &darr;</button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/">Now Playing</a>
+                                <a href="http://127.0.0.1:8000/">Coming Soon</a>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="searchBox">
+                        <li style="margin-top: 30px">
+                            <form method="POST">
+                                <input type="text" class="textbox" placeholder="Search Movies">
+                                <input title="Search Movies" value="&#x1F50D;" type="submit" class="button">
+                            </form>
+                         </li>
+                     </div>
+                    {% block content %}
+                    {% if user.is_authenticated %}
+                    {% csrf_token %}
+                    <li style="margin-top: 15px; padding-right: 15px; float: right;">
+                        <div class="dropdown">
+                            <button class="dropbtn"><a>{{ user.first_name }} {{ user.last_name }}</a></button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/accounts/viewProfile">Profile</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endblock %}
+                </ul>
+            </div>
+                {% if user.is_superuser %}
+                    <div class="smallcontainer">
+                        <p>ADMIN PAGE WILL BE HERE</p>
+                    </div>
+                {% else %}
+                    <div class="smallcontainer">
+                            <p>Email: {{ user.email }}</p>
+                            <p>First Name: {{ user.first_name }}</p>
+                            <p>Last Name: {{ user.last_name }}</p>
+                            <p>Street Address: {{ user.street_address }}</p>
+                            <p>City: {{ user.city }}</p>
+                            <p>State: {{ user.state }}</p>
+                            <p>Zip Code: {{ user.zipcode }}</p>
+                            <p>Send Promo: {{ user.sendPromo }}</p>
+                            <form action="http://127.0.0.1:8000/accounts/editProfile/"><input id="loginbtn" type="submit" value="Edit Profile"></form>
+                            <form action="http://127.0.0.1:8000/accounts/editPayment/"><input id="loginbtn" type="submit" value="Edit Payment Info"></form>
+                            <form action="http://127.0.0.1:8000/accounts/orderHistory/"><input id="loginbtn" type="submit" value="View Order History"></form>
+
+
+
+                    </div>
+                 {% endif %}
+
+        </div>
+    </body>
+    <div class='footer'>
+    <p>Group 9A</p>
+    <p>TixPix E-Cinema Booking System</p>
+    <p>University of Georgia FALL 2018 CSCI4050 Software Engineering</p>
+</div>
+</html>

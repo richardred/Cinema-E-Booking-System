@@ -1,0 +1,155 @@
+{% load static %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'checkout/ticket.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'movie_css/movie_page.css' %}">
+    <meta charset='UTF-8'>
+    <title>Showtimes</title>
+</head>
+
+<header>
+<div class="container">
+            <div id="topBar">
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/">
+                            <img src="{% static 'pictures/cinema_logo.png' %}" alt="main logo" id="cinemalogo"/>
+                        </a>
+                    </li>
+                    <li style="margin-top: 30px; padding-right: 10px">
+                        <div class="dropdown">
+                            <button class="dropbtn">Movies &darr;</button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/">Now Playing</a>
+                                <a href="http://127.0.0.1:8000/">Coming Soon</a>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="searchBox">
+                        <li style="margin-top: 30px">
+                            <form method="POST" action="/movies/searchresult/">
+                                {% csrf_token %}
+                                <input type="text" class="textbox" name="search" placeholder="Search Movies">
+                                <input title="Search Movies" value="&#x1F50D;" type="submit" class="button">
+                            </form>
+                         </li>
+                     </div>
+                    {% block content %}
+                    {% if user.is_authenticated %}
+                    {% csrf_token %}
+                    <!--<li style="margin-top: 15px; padding-right: 10px; float: right;"><a href="{% url 'logout' %}">Log Out</a></li>-->
+                    <li style="margin-top: 15px; padding-right: 15px; float: right;">
+                        {% if user.is_superuser %}
+                        <div class="dropdown">
+                            <button class="dropbtn"><a>{{ user.first_name }} {{ user.last_name }}</a></button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/admin">Admin Portal</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="dropdown">
+                            <button class="dropbtn"><a>{{ user.first_name }} {{ user.last_name }}</a>   </button>
+                            <div class="dropdown-content">
+                                <a href="http://127.0.0.1:8000/accounts/viewProfile/">Profile</a>
+                                <a href="{% url 'logout' %}">Log Out</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% else %}
+                    {% csrf_token %}
+                    <li style="margin-top: 15px; padding-right: 10px; float: right"><a href="{% url 'login' %}">Login</a></li>
+
+                    {% endif %}
+                    {% endblock %}
+                </ul>
+                </div></div>
+</header>
+
+<body>
+<div class="container">
+    <div class="smallcontainer">
+        <p><h1>{{ movie.title }}</h1></p><hr>
+        <p>Date: {{ date }} at {{ time }}</p>
+        <div class="smallcontainers">
+            <p>Please select your tickets:</p>
+            <div class="ticketList">
+                <ol>
+                    <p>{{ adultTicket.ticket_type }}</p>
+                    <p>{{ childTicket.ticket_type }}</p>
+                    <p>{{ seniorTicket.ticket_type }}</p>
+                </ol>
+            </div>
+            <div  class="priceList">
+                 <ol>
+                     <p>${{ adultTicket.ticket_price }}.00</p>
+                     <p>${{ childTicket.ticket_price }}.00</p>
+                     <p>${{ seniorTicket.ticket_price }}.00</p>
+                 </ol>
+            </div>
+            <div class="quantityList">
+                <ol>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ adultForm.as_p }}
+                    {{ childForm.as_p }}
+                    {{ seniorForm.as_p }}
+             <div class="updateBtn">
+                     <input type="submit" value="Update Cart" id="updateCart">
+             </div>
+                </form>
+                </ol>
+            </div><br><br><br><br><br><br>
+
+        </div>
+    </div>
+    <div class="smallcontainer">
+        <div class="promoDiv">
+            <p id="promo">Promo Code</p><hr>
+            <p id="promoInstruct">Add a gift-card or promotion code</p>
+            <form method="POST" action="http://127.0.0.1:8000/movies/book/{{ movie.title }}/{{ date }}/{{ time }}/applypromo/{{ adult }}/{{ child }}/{{ senior }}">
+            {% csrf_token %}
+                <input type="text" class="textbox" name="promo" id="promoBox" placeholder="Enter Code">
+                <input value="Apply" type="submit" id="promobtn">
+            </form>
+        </div>
+    </div>
+    <div class="summaryContainer">
+        <p id="orderSummary">Order Summary:</p><hr>
+        <div class="ticketList">
+            <ol>
+                <p>{{ adult }} Adult Tickets</p>
+                <p>{{ child }} Child Tickets</p>
+                <p>{{ senior }} Senior Tickets</p>
+            </ol>
+        </div>
+        <div  class="priceList">
+             <ol>
+                 <p>${{ adultTotal }}.00</p>
+                 <p>${{ childTotal }}.00</p>
+                 <p>${{ seniorTotal }}.00</p>
+                 <hr>
+                 <p>Ticket Total: ${{ totalTickets }}.00</p>
+                 <p>Sales Tax: ${{ salesTax }}0</p><hr>
+                 <p>Total: ${{ totalCost }}0</p><hr>
+                 <p>Promotion Discount: ${{ discountedRate }}</p>
+                 <p>Total: ${{ adjustedCost }}</p>
+             </ol>
+        </div>
+        <div class="checkoutBtn">
+            <form action="http://127.0.0.1:8000/movies/book/{{movie.title}}/{{date}}/{{time}}/applypromo/{{adult}}/{{child}}/{{senior}}/{{ discountedRate }}/checkout">
+                <input type="submit" value="Checkout" id="checkoutCart">
+            </form>
+             <form action="http://127.0.0.1:8000/">
+                <input type="submit" value="Cancel Order" id="cancelBtn">
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>

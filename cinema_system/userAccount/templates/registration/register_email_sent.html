@@ -1,0 +1,20 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset='UTF-8'>
+    <title>Moovies :D</title>
+</head>
+<body>
+<div class="container">
+<h1>An email was sent to {{ user.email }} containing an activation code!</h1>
+<p>Please check your inbox for your activation code and copy it here.</p>
+<form method='POST'><div class="confirm">
+{% csrf_token %}<br>
+<input name='code'><br><br><br><br>
+<button type="submit" id="loginbtn">Login</button><br></div>
+</form>
+</div>
+</body>
+</html>
